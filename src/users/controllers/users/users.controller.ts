@@ -33,8 +33,8 @@ export class UsersController {
   }
 
   @Get(':id/:postId')
-  getUserById(@Param('id') id: string) {
-    console.log(id);
-    return { id };
+  getUserById(@Param('id') id: string, @Param('postId') postId: string) {
+    console.log('postId', id, postId);
+    return { id, postId };
   }
 }
