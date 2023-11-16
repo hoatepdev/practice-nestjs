@@ -12,7 +12,7 @@ import {
   ValidationPipe,
   ParseBoolPipe,
   ParseIntPipe,
-  HttpExceptionBody,
+  HttpException,
 } from '@nestjs/common';
 import { HttpStatus } from '@nestjs/common/enums';
 import { Request, Response } from 'express';
@@ -37,7 +37,7 @@ export class UsersController {
     const user = this.usersService.fetchUserById(id);
 
     if (!user) {
-      throw new HttpExceptionBody('User not found', HttpStatus.BAD_REQUEST);
+      throw new HttpException('User not found', HttpStatus.BAD_REQUEST);
     }
     return user;
   }
