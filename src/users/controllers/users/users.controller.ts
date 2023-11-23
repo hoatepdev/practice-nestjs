@@ -17,6 +17,7 @@ import {
 import { HttpStatus } from '@nestjs/common/enums';
 import { Request, Response } from 'express';
 import { CreateUserDto } from 'src/users/dtos/CreateUser.dto';
+import { ValidateCreateUserPipe } from 'src/users/pipes/validate-create-user.pipe';
 
 @Controller('users')
 export class UsersController {
@@ -28,7 +29,7 @@ export class UsersController {
 
   @Post('create')
   @UsePipes(new ValidationPipe())
-  createUser(@Body() userData: CreateUserDto) {
+  createUser(@Body(ValidateCreateUserPipe) userData: CreateUserDto) {
     return this.usersService.createUser(userData);
   }
 
