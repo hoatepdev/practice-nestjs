@@ -1,4 +1,4 @@
-import { UsersService } from './../../services/users/users.service';
+import { UsersService } from '../services/users.service';
 import {
   Controller,
   Get,
@@ -13,13 +13,16 @@ import {
   ParseBoolPipe,
   ParseIntPipe,
   HttpException,
+  UseGuards,
 } from '@nestjs/common';
 import { HttpStatus } from '@nestjs/common/enums';
 import { Request, Response } from 'express';
 import { CreateUserDto } from 'src/users/dtos/CreateUser.dto';
 import { ValidateCreateUserPipe } from 'src/users/pipes/validate-create-user.pipe';
+import { AuthGuard } from '../guards/auth.guard';
 
 @Controller('users')
+@UseGuards(AuthGuard)
 export class UsersController {
   constructor(private usersService: UsersService) {}
   @Get()

@@ -4,8 +4,8 @@ import {
   NestModule,
   RequestMethod,
 } from '@nestjs/common';
-import { UsersController } from './controllers/users/users.controller';
-import { UsersService } from './services/users/users.service';
+import { UsersController } from './controllers/users.controller';
+import { UsersService } from './services/users.service';
 import { ExampleMiddleware } from './middlewares/example.middleware';
 import { AnotherMiddleware } from './middlewares/another.middleware';
 
